@@ -1,9 +1,12 @@
 const express = require('express');
+const path = require('path');
 const morgan = require('morgan');
 const { engine } = require('express-handlebars');
 const app = express();
 const port = 3000;
-const path = require('path')
+
+// Cấu hình thư mục tĩnh 'public'
+app.use(express.static(path.join(__dirname, 'public')));
 // http logger
 app.use(morgan('combined'));
 
@@ -30,5 +33,5 @@ app.get('/news', (req, res) => {
 // })
 
 app.listen(port, () => {
-  console.log(`Example app listening on port ${port}`)
+  console.log(`Example app listening on port http://localhost:${port}`)
 })
